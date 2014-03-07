@@ -5,9 +5,9 @@ AVPlayer SDK is written for iOS developers who want to add powerful video player
 [![](https://dl.dropboxusercontent.com/u/87201024/avplayer/1.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/1.png)
 [![](https://dl.dropboxusercontent.com/u/87201024/avplayer/2.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/2.png)
 [![](https://dl.dropboxusercontent.com/u/87201024/avplayer/3.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/3.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)
 [![](https://dl.dropboxusercontent.com/u/87201024/avplayer/4.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/4.png)
 [![](https://dl.dropboxusercontent.com/u/87201024/avplayer/5.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/5.png)
-[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)
 
 ###Note
 
