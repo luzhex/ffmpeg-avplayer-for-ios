@@ -2,15 +2,18 @@ A powerful video player SDK for iOS. The SDK can play the most audio and video f
 
 AVPlayer SDK is written for iOS developers who want to add powerful video player to their app using a couple lines of code. Behind the scenes Video Player relies on the iOS OpenGL ES 2.0 framework and the open source LGPL licensed FFmpeg library.
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/1.png)]
+<p align=“center” >
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/1.png”>
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/2.png)]
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/2.png”>
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/3.png)]
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/3.png”>
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/4.png)]
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/4.png”>
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/5.png)]
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/5.png”>
+
+</p>
 
 [![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/6.png)]
 
