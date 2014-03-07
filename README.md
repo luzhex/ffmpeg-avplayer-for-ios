@@ -2,17 +2,12 @@ A powerful video player SDK for iOS. The SDK can play the most audio and video f
 
 AVPlayer SDK is written for iOS developers who want to add powerful video player to their app using a couple lines of code. Behind the scenes Video Player relies on the iOS OpenGL ES 2.0 framework and the open source LGPL licensed FFmpeg library.
 
-![1](https://dl.dropboxusercontent.com/u/87201024/avplayer/1.png)
-
-![2](https://dl.dropboxusercontent.com/u/87201024/avplayer/2.png)
-
-![3](https://dl.dropboxusercontent.com/u/87201024/avplayer/3.png)
-
-![4](https://dl.dropboxusercontent.com/u/87201024/avplayer/4.png)
-
-![5](https://dl.dropboxusercontent.com/u/87201024/avplayer/5.png)
-
-![6](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/1.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/1.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/2.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/2.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/3.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/3.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/4.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/4.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/5.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/5.png)
+[![](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)](https://dl.dropboxusercontent.com/u/87201024/avplayer/6.png)
 
 ###Note
 
