@@ -13,9 +13,10 @@ AVPlayer SDK is written for iOS developers who want to add powerful video player
 
 <img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/5.png”>
 
+<img src="https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/6.png”>
+
 </p>
 
-[![Image](https://github.com/iMoreApps/AVPlayer-for-iOS-Demo/blob/master/demo-images/6.png)]
 
 **Note
 
