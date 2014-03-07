@@ -1,5 +1,7 @@
 //
-// Prefix header for all source files of the 'AVPlayerDemo' target in the 'AVPlayerDemo' project
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
 //
 
 #import <Availability.h>
@@ -11,5 +13,4 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import <trial.AVPlayerFramework/AVPlayerLib.h>
 #endif
