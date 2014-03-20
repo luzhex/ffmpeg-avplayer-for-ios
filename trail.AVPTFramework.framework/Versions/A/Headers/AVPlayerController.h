@@ -169,6 +169,18 @@ typedef enum {
 - (BOOL)play:(double)fact;
 
 /*
+ * Fast forward.
+ * @This function does not return a value.
+ */
+- (void)fastforward;
+
+/*
+ * Fast backward.
+ * @This function does not return a value.
+ */
+- (void)fastbackward;
+
+/*
  * Pause playback.
  * @This function does not return a value.
  */
