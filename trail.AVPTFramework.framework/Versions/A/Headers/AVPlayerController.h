@@ -27,6 +27,9 @@ typedef enum {
 
 @protocol AVPlayerControllerDelegate;
 
+/**
+ * !!! AVPlayerController component is NOT thread-safe !!!
+ */
 @interface AVPlayerController : NSObject
 
 @property (nonatomic, readonly) NSString *moviePath;
