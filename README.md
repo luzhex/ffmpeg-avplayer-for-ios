@@ -28,6 +28,7 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - ARC support.
  - armv7, armv7s, arm64, i386 and x86-64 support.
  - Local file support.
+ - **Windows SMB/CIFS file support (PRO version only)**
  - http and rtmp protocols support.
  - Parse audio and video duration, frame size infos.
  - Grab video thumbnails.
