@@ -2,8 +2,8 @@
 //  AVPlayerViewController.m
 //  AVPlayer
 //
-//  Created by apple on 13-5-22.
-//  Copyright (c) 2013年 iMoreApp Inc. All rights reserved.
+//  Created by apple on 2/27/14.
+//  Copyright (c) 2014 iMoreApps Inc. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -56,7 +56,7 @@
     if (![self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.wantsFullScreenLayout = YES;
     }
-
+    
     // Other initalization
     _hudVisible = YES;
 }
@@ -102,7 +102,7 @@
 }
 
 // Build up sub-views
-    
+
 - (void)buildViews
 {
     CGRect bounds = self.view.bounds;
@@ -118,7 +118,7 @@
     _topBar.barStyle = UIBarStyleBlackTranslucent;
     _topBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_topBar];
-
+    
     UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
     [_topBar pushNavigationItem:navigationItem animated:NO];
     
@@ -274,7 +274,7 @@
         // Cover image view
         CGRect r = self.view.bounds;
         UIImage *image = [UIImage imageNamed:@"avplayer.bundle/music_icon"];
-
+        
         _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         _coverImageView.hidden = YES;
         _coverImageView.contentMode = UIViewContentModeCenter;
@@ -282,7 +282,7 @@
         _coverImageView.image = image;
         _coverImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
         UIViewAutoresizingFlexibleRightMargin| UIViewAutoresizingFlexibleLeftMargin;
-
+        
         [self.view addSubview:_coverImageView];
         _coverImageView.center = CGPointMake(CGRectGetMidX(r), CGRectGetMidY(r));
     }
@@ -310,14 +310,14 @@
                 _glView.frame = self.view.bounds;
                 _glView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
                 [self.view insertSubview:_glView atIndex:0];
-
+                
                 // Setup user interaction (gestures)
                 [self setupUserInteraction:_glView];
             }
             else {
                 // Setup user interaction (gestures)
                 [self setupUserInteraction:self.view];
-
+                
                 if ([_avplayController hasAudio]) {
                     [self coverImageView].hidden = NO;
                 }
@@ -412,7 +412,7 @@
         // For local media file source
         // If playback reached to end, we return to begin of the media file,
         // and pause the palyer to prepare for next playback.
-
+        
         if (![controller isNetworkFile]) {
             [controller seekto:0];
             [controller pause];
@@ -491,7 +491,7 @@
     _hudVisible = hudVisible;
     
     [[UIApplication sharedApplication] setStatusBarHidden:!_hudVisible withAnimation:UIStatusBarAnimationNone];
-
+    
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionTransitionNone
@@ -529,7 +529,7 @@
 {
     _adjustSpeedView.hidden =
     _videoEffectView.hidden = YES;
-
+    
     if (sender.state == UIGestureRecognizerStateEnded) {
         
         if (sender == _tapGestureRecognizer) {
@@ -548,7 +548,7 @@
     if (_willDismiss) {
         _willDismiss();
     }
-
+    
     _avplayController.delegate = nil;
     [_avplayController stop];
     
@@ -574,7 +574,7 @@
 - (void)playDidTouch:(id)sender
 {
     AVPlayerState playerState = [_avplayController playerState];
-
+    
     if (playerState == kAVPlayerStatePlaying)
         [_avplayController pause];
     else
@@ -602,7 +602,7 @@
     if (!_adjustSpeedView) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PlaybackSpeedView" owner:nil options:nil];
         _adjustSpeedView = views[0];
-
+        
         [self.view addSubview:_adjustSpeedView];
         _adjustSpeedView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
         
@@ -625,7 +625,7 @@
     
     NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     
-    [_avplayController.audioTrackers enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+    [_avplayController.audioTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         NSString *streamTitle = obj[@"title"];
         NSString *langCode = obj[@"language"];
         
@@ -664,7 +664,7 @@
     
     NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     
-    [_avplayController.subtitleStreams enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+    [_avplayController.subtitleTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
         NSString *streamTitle = obj[@"title"];
         NSString *langCode = obj[@"language"];
         

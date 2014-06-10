@@ -36,8 +36,12 @@ typedef enum {
 @property (nonatomic, weak) id <AVPlayerControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL shouldAutoPlay;
 @property (nonatomic, assign) BOOL shouldPlayOnBackground;
-@property (nonatomic, readonly) NSArray *audioTrackers;
-@property (nonatomic, readonly) NSArray *subtitleStreams;
+
+@property (nonatomic, readonly) NSInteger currentAudioTrack;
+@property (nonatomic, readonly) NSArray *audioTracks;
+
+@property (nonatomic, readonly) NSInteger currentSubtitleTrack;
+@property (nonatomic, readonly) NSArray *subtitleTracks;
 
 /**
  * Adjust contrast and saturation of the video display.
