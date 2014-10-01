@@ -2,8 +2,8 @@
 //  AVPlayerViewController.m
 //  AVPlayer
 //
-//  Created by apple on 2/27/14.
-//  Copyright (c) 2014 iMoreApps Inc. All rights reserved.
+//  Created by apple on 13-5-22.
+//  Copyright (c) 2013年 iMoreApp Inc. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -56,7 +56,7 @@
     if (![self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.wantsFullScreenLayout = YES;
     }
-    
+
     // Other initalization
     _hudVisible = YES;
 }
@@ -102,7 +102,7 @@
 }
 
 // Build up sub-views
-
+    
 - (void)buildViews
 {
     CGRect bounds = self.view.bounds;
@@ -118,7 +118,7 @@
     _topBar.barStyle = UIBarStyleBlackTranslucent;
     _topBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_topBar];
-    
+
     UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
     [_topBar pushNavigationItem:navigationItem animated:NO];
     
@@ -274,7 +274,7 @@
         // Cover image view
         CGRect r = self.view.bounds;
         UIImage *image = [UIImage imageNamed:@"avplayer.bundle/music_icon"];
-        
+
         _coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         _coverImageView.hidden = YES;
         _coverImageView.contentMode = UIViewContentModeCenter;
@@ -282,7 +282,7 @@
         _coverImageView.image = image;
         _coverImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
         UIViewAutoresizingFlexibleRightMargin| UIViewAutoresizingFlexibleLeftMargin;
-        
+
         [self.view addSubview:_coverImageView];
         _coverImageView.center = CGPointMake(CGRectGetMidX(r), CGRectGetMidY(r));
     }
@@ -310,14 +310,14 @@
                 _glView.frame = self.view.bounds;
                 _glView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
                 [self.view insertSubview:_glView atIndex:0];
-                
+
                 // Setup user interaction (gestures)
                 [self setupUserInteraction:_glView];
             }
             else {
                 // Setup user interaction (gestures)
                 [self setupUserInteraction:self.view];
-                
+
                 if ([_avplayController hasAudio]) {
                     [self coverImageView].hidden = NO;
                 }
@@ -412,7 +412,7 @@
         // For local media file source
         // If playback reached to end, we return to begin of the media file,
         // and pause the palyer to prepare for next playback.
-        
+
         if (![controller isNetworkFile]) {
             [controller seekto:0];
             [controller pause];
@@ -491,7 +491,7 @@
     _hudVisible = hudVisible;
     
     [[UIApplication sharedApplication] setStatusBarHidden:!_hudVisible withAnimation:UIStatusBarAnimationNone];
-    
+
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionTransitionNone
@@ -529,7 +529,7 @@
 {
     _adjustSpeedView.hidden =
     _videoEffectView.hidden = YES;
-    
+
     if (sender.state == UIGestureRecognizerStateEnded) {
         
         if (sender == _tapGestureRecognizer) {
@@ -548,7 +548,7 @@
     if (_willDismiss) {
         _willDismiss();
     }
-    
+
     _avplayController.delegate = nil;
     [_avplayController stop];
     
@@ -574,7 +574,7 @@
 - (void)playDidTouch:(id)sender
 {
     AVPlayerState playerState = [_avplayController playerState];
-    
+
     if (playerState == kAVPlayerStatePlaying)
         [_avplayController pause];
     else
@@ -602,7 +602,7 @@
     if (!_adjustSpeedView) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PlaybackSpeedView" owner:nil options:nil];
         _adjustSpeedView = views[0];
-        
+
         [self.view addSubview:_adjustSpeedView];
         _adjustSpeedView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
         
@@ -621,91 +621,91 @@
 
 - (void)selectAudioTrackDidTouch:(id)sender
 {
-    NSMutableArray *buttonTitles = [NSMutableArray array];
+  NSMutableArray *buttonTitles = [NSMutableArray array];
+  
+  NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+  
+  [_avplayController.audioTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+    NSString *streamTitle = obj[@"title"];
+    NSString *langCode = obj[@"language"];
     
-    NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    streamTitle = [streamTitle stringByTrimmingCharactersInSet:cs];
+    langCode = [langCode stringByTrimmingCharactersInSet:cs];
     
-    [_avplayController.audioTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-        NSString *streamTitle = obj[@"title"];
-        NSString *langCode = obj[@"language"];
-        
-        streamTitle = [streamTitle stringByTrimmingCharactersInSet:cs];
-        langCode = [langCode stringByTrimmingCharactersInSet:cs];
-        
-        NSString *buttonTitle = @"Unknown";
-        if ([streamTitle length] > 0) {
-            buttonTitle = streamTitle;
-        }
-        else if ([langCode length] > 0) {
-            NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
-            buttonTitle = enLangName;
-        }
-        [buttonTitles addObject:[NSString stringWithFormat:@"Track %u - %@", idx+1, buttonTitle]];
-    }];
-    
-    UIAlertView *alertView = [UIAlertView showWithTitle:@"Audio Trackers Picker"
-                                                message:nil
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:buttonTitles
-                                               tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                                   NSInteger firstOBIndex = [alertView firstOtherButtonIndex];
-                                                   NSInteger lastOBIndex = firstOBIndex+[buttonTitles count];
-                                                   
-                                                   if (buttonIndex >= firstOBIndex && buttonIndex < lastOBIndex) {
-                                                       [_avplayController switchAudioTracker:(int)(buttonIndex-firstOBIndex)];
-                                                   }
-                                               }];
-    [alertView show];
+    NSString *buttonTitle = @"Unknown";
+    if ([streamTitle length] > 0) {
+      buttonTitle = streamTitle;
+    }
+    else if ([langCode length] > 0) {
+      NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
+      buttonTitle = enLangName;
+    }
+    [buttonTitles addObject:[NSString stringWithFormat:@"Track %u - %@", idx+1, buttonTitle]];
+  }];
+  
+  UIAlertView *alertView = [UIAlertView showWithTitle:@"Audio Trackers Picker"
+                                              message:nil
+                                    cancelButtonTitle:@"Cancel"
+                                    otherButtonTitles:buttonTitles
+                                             tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                               NSInteger firstOBIndex = [alertView firstOtherButtonIndex];
+                                               NSInteger lastOBIndex = firstOBIndex+[buttonTitles count];
+                                               
+                                               if (buttonIndex >= firstOBIndex && buttonIndex < lastOBIndex) {
+                                                 [_avplayController switchAudioTracker:(int)(buttonIndex-firstOBIndex)];
+                                               }
+                                             }];
+  [alertView show];
 }
 
 - (void)selectSubtitleDidTouch:(id)sender
 {
-    NSMutableArray *buttonTitles = [NSMutableArray array];
+  NSMutableArray *buttonTitles = [NSMutableArray array];
+  
+  NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+  
+  [_avplayController.subtitleTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+    NSString *streamTitle = obj[@"title"];
+    NSString *langCode = obj[@"language"];
     
-    NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    streamTitle = [streamTitle stringByTrimmingCharactersInSet:cs];
+    langCode = [langCode stringByTrimmingCharactersInSet:cs];
     
-    [_avplayController.subtitleTracks enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-        NSString *streamTitle = obj[@"title"];
-        NSString *langCode = obj[@"language"];
-        
-        streamTitle = [streamTitle stringByTrimmingCharactersInSet:cs];
-        langCode = [langCode stringByTrimmingCharactersInSet:cs];
-        
-        NSString *buttonTitle;
-        if ([streamTitle length] > 0) {
-            buttonTitle = streamTitle;
-        }
-        else {
-            NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
-            buttonTitle = enLangName;
-        }
-        [buttonTitles addObject:[NSString stringWithFormat:@"Subtitle %u - %@", idx+1, buttonTitle]];
-    }];
-    
-    [buttonTitles addObject:@"External subtitle file"];
-    
-    UIAlertView *alertView = [UIAlertView showWithTitle:@"Subtitles Picker"
-                                                message:nil
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:buttonTitles
-                                               tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                                   
-                                                   NSInteger firstOBIndex = [alertView firstOtherButtonIndex];
-                                                   NSInteger lastOBIndex = firstOBIndex+[buttonTitles count];
-                                                   
-                                                   if (buttonIndex == lastOBIndex-1) {
-                                                       
-                                                       NSString *subtitlePath;
-                                                       subtitlePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"ass"];
-                                                       if (![_avplayController openSubtitleFile:subtitlePath encoding:kCFStringEncodingGB_18030_2000]) {
-                                                           NSLog(@"Open %@ subtitle file failed!", [subtitlePath lastPathComponent]);
-                                                       }
-                                                   }
-                                                   else if (buttonIndex >= firstOBIndex && buttonIndex < lastOBIndex) {
-                                                       [_avplayController switchSubtitleStream:(int)(buttonIndex-firstOBIndex)];
-                                                   }
-                                               }];
-    [alertView show];
+    NSString *buttonTitle;
+    if ([streamTitle length] > 0) {
+      buttonTitle = streamTitle;
+    }
+    else {
+      NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
+      buttonTitle = enLangName;
+    }
+    [buttonTitles addObject:[NSString stringWithFormat:@"Subtitle %u - %@", idx+1, buttonTitle]];
+  }];
+  
+  [buttonTitles addObject:@"External subtitle file"];
+  
+  UIAlertView *alertView = [UIAlertView showWithTitle:@"Subtitles Picker"
+                                              message:nil
+                                    cancelButtonTitle:@"Cancel"
+                                    otherButtonTitles:buttonTitles
+                                             tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                               
+                                               NSInteger firstOBIndex = [alertView firstOtherButtonIndex];
+                                               NSInteger lastOBIndex = firstOBIndex+[buttonTitles count];
+                                               
+                                               if (buttonIndex == lastOBIndex-1) {
+                                                 
+                                                 NSString *subtitlePath;
+                                                 subtitlePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"ass"];
+                                                 if (![_avplayController openSubtitleFile:subtitlePath encoding:kCFStringEncodingGB_18030_2000]) {
+                                                   NSLog(@"Open %@ subtitle file failed!", [subtitlePath lastPathComponent]);
+                                                 }
+                                               }
+                                               else if (buttonIndex >= firstOBIndex && buttonIndex < lastOBIndex) {
+                                                 [_avplayController switchSubtitleStream:(int)(buttonIndex-firstOBIndex)];
+                                               }
+                                             }];
+  [alertView show];
 }
 
 - (void)videoEffectDidTouch:(id)sender
@@ -713,7 +713,7 @@
     if (!_videoEffectView) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"VideoEffectView" owner:nil options:nil];
         _videoEffectView = views[0];
-        
+      
         [self.view addSubview:_videoEffectView];
         _videoEffectView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
         
