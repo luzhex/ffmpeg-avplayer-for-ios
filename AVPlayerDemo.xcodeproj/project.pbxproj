@@ -34,6 +34,8 @@
 		18B8E7E218A21890003ACB1D /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E7E118A21890003ACB1D /* AVPlayerViewController.m */; };
 		18DA08BB18BC5AD500D2C142 /* test.ass in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08BA18BC5AD500D2C142 /* test.ass */; };
 		18DA08E818BF50A400D2C142 /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08E718BF50A400D2C142 /* test.srt */; };
+		18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35BF19DD8B5C008337A3 /* libcrypto.a */; };
+		18DA35C219DD8B5C008337A3 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35C019DD8B5C008337A3 /* libssl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		18B8E7E118A21890003ACB1D /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
 		18DA08BA18BC5AD500D2C142 /* test.ass */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ass; sourceTree = "<group>"; };
 		18DA08E718BF50A400D2C142 /* test.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.srt; sourceTree = "<group>"; };
+		18DA35BF19DD8B5C008337A3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		18DA35C019DD8B5C008337A3 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = openssl/lib/libssl.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				18B8E7B718A0C6C5003ACB1D /* libiconv.dylib in Frameworks */,
 				1824ED9A18C57676005CE8F8 /* libz.dylib in Frameworks */,
 				18B8E7B418A0C6B8003ACB1D /* libbz2.dylib in Frameworks */,
+				18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */,
+				18DA35C219DD8B5C008337A3 /* libssl.a in Frameworks */,
 				18A0BAE218A0C3FF008AA66D /* Foundation.framework in Frameworks */,
 				18A0BAE618A0C3FF008AA66D /* UIKit.framework in Frameworks */,
 				18A0BAE418A0C3FF008AA66D /* CoreGraphics.framework in Frameworks */,
@@ -119,6 +125,8 @@
 		18A0BAE018A0C3FF008AA66D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18DA35BF19DD8B5C008337A3 /* libcrypto.a */,
+				18DA35C019DD8B5C008337A3 /* libssl.a */,
 				18B8E7B618A0C6C5003ACB1D /* libiconv.dylib */,
 				1824ED9918C57676005CE8F8 /* libz.dylib */,
 				18B8E7B218A0C6B8003ACB1D /* libbz2.dylib */,
@@ -314,6 +322,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "60fb4d23-7f30-4a92-ae50-b89c625ee291";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -369,7 +378,10 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "AVPlayerDemo/AVPlayerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -390,7 +402,10 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "AVPlayerDemo/AVPlayerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
