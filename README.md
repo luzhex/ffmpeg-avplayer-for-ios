@@ -1,4 +1,4 @@
-A powerful video player SDK for iOS. The SDK can play the most audio and video formats (Includes network audio and video streams), no convert hassles.
+A tiny but powerful video player framework for iOS. The SDK can play the most audio and video formats (Includes network audio and video streams), no convert hassles, no VLC, no SDL.
 
 AVPlayer SDK is written for iOS developers who want to add powerful video player to their app using a couple lines of code. Behind the scenes Video Player relies on the iOS OpenGL ES 2.0 framework and the open source LGPL licensed FFmpeg library.
 
@@ -16,7 +16,7 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
 ###Compile Requirements
 
  - ARC
- - XCode 5.0 & iOS SDK 7.0
+ - XCode 6.0 & iOS SDK 8.0
 
 ###Deploy Requirements
 
@@ -29,7 +29,7 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - armv7, armv7s, arm64, i386 and x86-64 support.
  - Local file support.
  - **Windows SMB/CIFS file support (PRO version only)**
- - http and rtmp protocols support.
+ - http, https and rtmp protocols support.
  - Parse audio and video duration, frame size infos.
  - Grab video thumbnails.
  - Real-time bit & frame rate and network buffering progress calculation.
