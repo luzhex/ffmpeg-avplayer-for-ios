@@ -1,4 +1,4 @@
-A tiny but powerful video player framework for iOS. The SDK can play the most audio and video formats (Includes network audio and video streams), no convert hassles, no VLC, no SDL.
+A tiny but powerful video player framework for iOS. The SDK can play the most audio and video formats (Includes network audio and video streams), no convert hassles, no VLC and SDL dependent.
 
 AVPlayer SDK is written for iOS developers who want to add powerful video player to their app using a couple lines of code. Behind the scenes Video Player relies on the iOS OpenGL ES 2.0 framework and the open source LGPL licensed FFmpeg library.
 
