@@ -14,7 +14,7 @@
 		<string>https://github.com/iMoreApps/ffmpeg-avplayer-for-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AVPlayerDemo.xcodeproj/project.xcworkspace</string>
+	<string>AVPlayerDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>CB11C61A0719C6AA3C3F3EB73F63EA114D6B6B90</key>

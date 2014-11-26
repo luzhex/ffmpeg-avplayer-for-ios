@@ -1,5 +1,5 @@
 //
-//  AVPlayerViewController.h
+//  PlayerViewController.h
 //  AVPlayer
 //
 //  Created by apple on 13-5-22.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <trail.AVPTFramework/AVPlayerController.h>
 
-@interface AVPlayerViewController : UIViewController
+@interface PlayerViewController : UIViewController
 
 // audio or video file path (local or network file path)
 @property (nonatomic, strong) NSString *mediaPath;

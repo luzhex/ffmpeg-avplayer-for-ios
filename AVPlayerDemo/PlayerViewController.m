@@ -1,5 +1,5 @@
 //
-//  AVPlayerViewController.m
+//  PlayerViewController.m
 //  AVPlayer
 //
 //  Created by apple on 13-5-22.
@@ -10,12 +10,12 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <trail.AVPTFramework/AVPlayerController.h>
 
-#import "AVPlayerViewController.h"
+#import "PlayerViewController.h"
 #import "UIAlertView+Blocks.h"
 #import "AdjustSpeedView.h"
 #import "VideoEffectView.h"
 
-@interface AVPlayerViewController () <AVPlayerControllerDelegate> {
+@interface PlayerViewController () <AVPlayerControllerDelegate> {
     AVPlayerController *_avplayController;
     
     BOOL                _prevStatusBarHidden;
@@ -43,7 +43,7 @@
 }
 @end
 
-@implementation AVPlayerViewController
+@implementation PlayerViewController
 
 // Initialize self
 

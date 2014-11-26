@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "AVPlayerViewController.h"
+#import "PlayerViewController.h"
 #import "MovieInfosViewController.h"
 
 @interface ViewController () {
@@ -110,8 +110,8 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
         
         UIViewController *controller = segue.destinationViewController;
-        if ([controller isKindOfClass:[AVPlayerViewController class]]) {
-            AVPlayerViewController *playerController = (AVPlayerViewController *)controller;
+        if ([controller isKindOfClass:[PlayerViewController class]]) {
+            PlayerViewController *playerController = (PlayerViewController *)controller;
             
             switch (indexPath.section) {
                 case 0:

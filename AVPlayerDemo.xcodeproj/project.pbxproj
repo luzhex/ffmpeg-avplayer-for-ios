@@ -31,7 +31,7 @@
 		18B8E7BB18A0C6DA003ACB1D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7BA18A0C6DA003ACB1D /* OpenGLES.framework */; };
 		18B8E7BD18A0C6E4003ACB1D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7BC18A0C6E4003ACB1D /* AudioToolbox.framework */; };
 		18B8E7C518A0C737003ACB1D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7C418A0C737003ACB1D /* AVFoundation.framework */; };
-		18B8E7E218A21890003ACB1D /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E7E118A21890003ACB1D /* AVPlayerViewController.m */; };
+		18B8E7E218A21890003ACB1D /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E7E118A21890003ACB1D /* PlayerViewController.m */; };
 		18DA08BB18BC5AD500D2C142 /* test.ass in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08BA18BC5AD500D2C142 /* test.ass */; };
 		18DA08E818BF50A400D2C142 /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08E718BF50A400D2C142 /* test.srt */; };
 		18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35BF19DD8B5C008337A3 /* libcrypto.a */; };
@@ -74,8 +74,8 @@
 		18B8E7BE18A0C701003ACB1D /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		18B8E7C418A0C737003ACB1D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		18B8E7C618A0C73F003ACB1D /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
-		18B8E7E018A21890003ACB1D /* AVPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
-		18B8E7E118A21890003ACB1D /* AVPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
+		18B8E7E018A21890003ACB1D /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		18B8E7E118A21890003ACB1D /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		18DA08BA18BC5AD500D2C142 /* test.ass */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ass; sourceTree = "<group>"; };
 		18DA08E718BF50A400D2C142 /* test.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.srt; sourceTree = "<group>"; };
 		18DA35BF19DD8B5C008337A3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 				18A0BAF318A0C3FF008AA66D /* Main.storyboard */,
 				18A0BAF618A0C400008AA66D /* ViewController.h */,
 				18A0BAF718A0C400008AA66D /* ViewController.m */,
-				18B8E7E018A21890003ACB1D /* AVPlayerViewController.h */,
-				18B8E7E118A21890003ACB1D /* AVPlayerViewController.m */,
+				18B8E7E018A21890003ACB1D /* PlayerViewController.h */,
+				18B8E7E118A21890003ACB1D /* PlayerViewController.m */,
 				1869D86018AB8B2B0069EE85 /* MovieInfosViewController.h */,
 				1869D86118AB8B2B0069EE85 /* MovieInfosViewController.mm */,
 				1891501A18C5D23F007EE50D /* UIAlertView+Blocks.h */,
@@ -261,7 +261,7 @@
 				1891502618C5DCE9007EE50D /* AdjustSpeedView.m in Sources */,
 				18A0BAF218A0C3FF008AA66D /* AppDelegate.m in Sources */,
 				1891501C18C5D23F007EE50D /* UIAlertView+Blocks.m in Sources */,
-				18B8E7E218A21890003ACB1D /* AVPlayerViewController.m in Sources */,
+				18B8E7E218A21890003ACB1D /* PlayerViewController.m in Sources */,
 				18A0BAEE18A0C3FF008AA66D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
