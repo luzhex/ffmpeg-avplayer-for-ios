@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <trail.AVPTFramework/AVPlayerController.h>
+#import <trail.AVPTFramework/FFAVPlayerController.h>
 
 @interface PlayerViewController : UIViewController
 
@@ -15,18 +15,18 @@
 @property (nonatomic, strong) NSString *mediaPath;
 
 // did load video successfully callback.
-@property (nonatomic, copy) void (^didLoadVideo)(AVPlayerController *player);
+@property (nonatomic, copy) void (^didLoadVideo)(FFAVPlayerController *player);
 
 // get start playback time (>= 0 and <= media duration).
 // if the property is nil, player will start playback from begining.
 // the callback returns a float number value or nil.
-@property (nonatomic, copy) NSNumber* (^getStartTime)(AVPlayerController *player, NSString *path);
+@property (nonatomic, copy) NSNumber* (^getStartTime)(FFAVPlayerController *player, NSString *path);
 
 // required saving progress info, you can save progress here.
-@property (nonatomic, copy) void (^saveProgress)(AVPlayerController *player);
+@property (nonatomic, copy) void (^saveProgress)(FFAVPlayerController *player);
 
 // on video playback did finish.
-@property (nonatomic, copy) void (^didFinishPlayback)(AVPlayerController *player);
+@property (nonatomic, copy) void (^didFinishPlayback)(FFAVPlayerController *player);
 
 // on video player controller will be dismissed.
 @property (nonatomic, copy) void (^willDismiss)(void);

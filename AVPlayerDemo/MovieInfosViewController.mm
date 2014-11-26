@@ -7,8 +7,8 @@
 //
 
 #import "MovieInfosViewController.h"
-#import <trail.AVPTFramework/AVPlayerController.h>
-#import <trail.AVPTFramework/AVParser.h>
+#import <trail.AVPTFramework/FFAVPlayerController.h>
+#import <trail.AVPTFramework/FFAVParser.h>
 
 @implementation MovieInfosViewController
 
@@ -33,7 +33,7 @@
             CGSize frameSize = CGSizeZero;
             UIImage *thumbnails = nil;
             
-            AVParser *mp = [[AVParser alloc] init];
+            FFAVParser *mp = [[FFAVParser alloc] init];
             if ([mp open:self.moviePath]) {
                 
                 duration = mp.duration;
@@ -43,7 +43,7 @@
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.durationLabel.text = [AVPlayerController formatTimeInterval:duration isLeft:NO];
+                self.durationLabel.text = [FFAVPlayerController formatTimeInterval:duration isLeft:NO];
                 self.videoSizeLabel.text = [NSString stringWithFormat:@"%d * %d", (int)frameSize.width, (int)frameSize.height];
                 self.thumbnailsImageView.image = thumbnails;
             });

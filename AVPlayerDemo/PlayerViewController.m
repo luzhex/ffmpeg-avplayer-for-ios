@@ -8,15 +8,15 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <trail.AVPTFramework/AVPlayerController.h>
+#import <trail.AVPTFramework/FFAVPlayerController.h>
 
 #import "PlayerViewController.h"
 #import "UIAlertView+Blocks.h"
 #import "AdjustSpeedView.h"
 #import "VideoEffectView.h"
 
-@interface PlayerViewController () <AVPlayerControllerDelegate> {
-    AVPlayerController *_avplayController;
+@interface PlayerViewController () <FFAVPlayerControllerDelegate> {
+    FFAVPlayerController *_avplayController;
     
     BOOL                _prevStatusBarHidden;
     UIStatusBarStyle    _prevStatusBarStyle;
@@ -297,8 +297,8 @@
     // Build sub-views
     [self buildViews];
     
-    // New and initialize AVPlayerController instance to prepare for playback
-    _avplayController = [[AVPlayerController alloc] init];
+    // New and initialize FFAVPlayerController instance to prepare for playback
+    _avplayController = [[FFAVPlayerController alloc] init];
     _avplayController.delegate = self;
     _avplayController.shouldPlayOnBackground = YES;
     _avplayController.shouldAutoPlay = (_getStartTime == nil ? YES:NO);
@@ -400,10 +400,10 @@
     return UIInterfaceOrientationMaskAll & (~UIInterfaceOrientationMaskPortraitUpsideDown);
 }
 
-#pragma mark - AVPlayerControllerDelegate
+#pragma mark - FFAVPlayerControllerDelegate
 
 // AVPlayer state was changed
-- (void)AVPlayerControllerDidStateChange:(AVPlayerController *)controller
+- (void)FFAVPlayerControllerDidStateChange:(FFAVPlayerController *)controller
 {
     AVPlayerState state = [controller playerState];
     
@@ -450,19 +450,19 @@
 }
 
 // AVPlayer current play time was changed
-- (void)AVPlayerControllerDidCurTimeChange:(AVPlayerController *)controller position:(NSTimeInterval)position
+- (void)FFAVPlayerControllerDidCurTimeChange:(FFAVPlayerController *)controller position:(NSTimeInterval)position
 {
     [self updateProgressViewsWithTimePosition:position];
 }
 
 // Enter or exit full screen mode
-- (void)AVPlayerControllerDidEnterFullscreenMode:(AVPlayerController *)controller
+- (void)FFAVPlayerControllerDidEnterFullscreenMode:(FFAVPlayerController *)controller
 {
     // Update full screen bar button
     [_fullscreenButton setImage:[UIImage imageNamed:@"avplayer.bundle/zoomout"]];
 }
 
-- (void)AVPlayerControllerDidExitFullscreenMode:(AVPlayerController *)controller
+- (void)FFAVPlayerControllerDidExitFullscreenMode:(FFAVPlayerController *)controller
 {
     // Update full screen bar button
     [_fullscreenButton setImage:[UIImage imageNamed:@"avplayer.bundle/zoomin"]];
@@ -516,8 +516,8 @@
     // Update time labels & progress slider
     NSTimeInterval duration = [_avplayController duration];
     
-    _leftLabel.text = [AVPlayerController formatTimeInterval:duration-timePosition isLeft:YES];
-    _progressLabel.text = [AVPlayerController formatTimeInterval:timePosition isLeft:NO];
+    _leftLabel.text = [FFAVPlayerController formatTimeInterval:duration-timePosition isLeft:YES];
+    _progressLabel.text = [FFAVPlayerController formatTimeInterval:timePosition isLeft:NO];
     
     if (_progressSlider.state == UIControlStateNormal)
         _progressSlider.value = timePosition / duration;
@@ -637,7 +637,7 @@
       buttonTitle = streamTitle;
     }
     else if ([langCode length] > 0) {
-      NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
+      NSString *enLangName = [FFAVPlayerController convertISO639LanguageCodeToEnName:langCode];
       buttonTitle = enLangName;
     }
     [buttonTitles addObject:[NSString stringWithFormat:@"Track %u - %@", idx+1, buttonTitle]];
@@ -676,7 +676,7 @@
       buttonTitle = streamTitle;
     }
     else {
-      NSString *enLangName = [AVPlayerController convertISO639LanguageCodeToEnName:langCode];
+      NSString *enLangName = [FFAVPlayerController convertISO639LanguageCodeToEnName:langCode];
       buttonTitle = enLangName;
     }
     [buttonTitles addObject:[NSString stringWithFormat:@"Subtitle %u - %@", idx+1, buttonTitle]];
