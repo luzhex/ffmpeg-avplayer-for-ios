@@ -38,8 +38,10 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - Brightness, contrast and saturation control.
  - Background audio, video playback support.
  - Full screen mode support.
+ - System volume control.
  - Play from a specified time position.
  - Play, pause, resume, stop, fast forward, fast backward, seek position actions support.
+ - Audio session interruption handler support
  - Delegate support, you can get notification when state, playback progress, buffering progress changed and enter/exit full screen mode.
  - Save, Restore playback progress support (Objective-c block style).
  - Multiple audio, subtitle streams support.
