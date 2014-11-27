@@ -25,7 +25,7 @@
     UIView              *_topHUD;
     UIView              *_bottomHUD;
     UISlider            *_progressSlider;
-    MPVolumeView        *_volumeSlider;
+    UISlider            *_volumeSlider;
     UIButton            *_playButton;
     UIButton            *_rewindButton;
     UIButton            *_forwardButton;
@@ -261,10 +261,9 @@
     [_forwardButton addTarget:self action:@selector(forwardDidTouch:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomHUD addSubview:_forwardButton];
     
-    _volumeSlider = [[MPVolumeView alloc] initWithFrame:CGRectMake(10, 55, width-(10 * 2), 20)];
+    _volumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 55, width-(10 * 2), 20)];
     _volumeSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    _volumeSlider.showsRouteButton = NO;
-    _volumeSlider.showsVolumeSlider = YES;
+    [_volumeSlider addTarget:self action:@selector(volumeDidChange:) forControlEvents:UIControlEventValueChanged];
     [_bottomHUD addSubview:_volumeSlider];
 }
 
@@ -297,6 +296,9 @@
     // Build sub-views
     [self buildViews];
     
+    // Sync the volume slider with current system volume
+    _volumeSlider.value = [FFAVPlayerController currentVolume];
+
     // New and initialize FFAVPlayerController instance to prepare for playback
     _avplayController = [[FFAVPlayerController alloc] init];
     _avplayController.delegate = self;
@@ -640,7 +642,7 @@
       NSString *enLangName = [FFAVPlayerController convertISO639LanguageCodeToEnName:langCode];
       buttonTitle = enLangName;
     }
-    [buttonTitles addObject:[NSString stringWithFormat:@"Track %u - %@", idx+1, buttonTitle]];
+    [buttonTitles addObject:[NSString stringWithFormat:@"Track %ld - %@", idx+1, buttonTitle]];
   }];
   
   UIAlertView *alertView = [UIAlertView showWithTitle:@"Audio Trackers Picker"
@@ -679,7 +681,7 @@
       NSString *enLangName = [FFAVPlayerController convertISO639LanguageCodeToEnName:langCode];
       buttonTitle = enLangName;
     }
-    [buttonTitles addObject:[NSString stringWithFormat:@"Subtitle %u - %@", idx+1, buttonTitle]];
+    [buttonTitles addObject:[NSString stringWithFormat:@"Subtitle %ld - %@", idx+1, buttonTitle]];
   }];
   
   [buttonTitles addObject:@"External subtitle file"];
@@ -741,6 +743,10 @@
     _avplayController.saturation = sender.value;
 }
 
+- (void)volumeDidChange:(UISlider *)sender
+{
+    [FFAVPlayerController setVolume:sender.value];
+}
 
 #pragma mark - Public
 

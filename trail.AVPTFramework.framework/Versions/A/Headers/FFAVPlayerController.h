@@ -257,6 +257,19 @@ typedef enum {
  */
 - (void)setPlaybackSpeed:(float)speed;
 
+/*
+ * Volume control - GET.
+ * @This function returns the current volume factor (0~1).
+ */
++ (float)currentVolume;
+
+/*
+ * Volume control - SET.
+ * @fact - volume factor (0~1).
+ * @This function does not return a value.
+ */
++ (void)setVolume:(float)fact;
+
 @end
 
 
