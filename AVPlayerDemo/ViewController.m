@@ -39,9 +39,9 @@
     _files = mediaFiles;
     
     // Network files
-    _networkfiles = @[@{@"url":@"rtmp://edge01.fms.dutchview.nl/botr/bunny.flv",@"title":@"rtmp://Bunny.FLV"},
-                      @{@"url":@"http://v.youku.com/player/getRealM3U8/vid/XNDY2ODM2NTg0/type/mp4", @"title":@"Youku music video"},
-                      @{@"url":@"http://hot.vrs.sohu.com/ipad1407291_4596271359934_4618512.m3u8", @"title":@"Youku m3u8 video"}];
+    _networkfiles = @[@{@"url":@"rtmp://<your RTMP stream url>",@"title":@"RTMP Stream"},
+                      @{@"url":@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp",@"title":@"RTSP Stream"},
+                      @{@"url":@"http://hot.vrs.sohu.com/ipad1407291_4596271359934_4618512.m3u8", @"title":@"HTTP m3u8 Stream"}];
 }
 
 - (void)viewDidLoad

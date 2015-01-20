@@ -11,12 +11,12 @@ AVPlayer SDK is written for iOS developers who want to add powerful video player
 
 ###Note
 
-Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video only on iPad Air & iPhone 5s devices.
+Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video only on iPad Air, iPhone 5s, iPhone 6(plus) devices.
 
 ###Compile Requirements
 
  - ARC
- - XCode 6.0 & iOS SDK 8.0
+ - XCode 6.1 & iOS SDK 8.1
 
 ###Deploy Requirements
 
@@ -28,8 +28,7 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - ARC support.
  - armv7, armv7s, arm64, i386 and x86-64 support.
  - Local file support.
- - **Windows SMB/CIFS file support (PRO version only)**
- - http, https and rtmp protocols support.
+ - http, https, rtsp and rtmp protocols support.
  - Parse audio and video duration, frame size infos.
  - Grab video thumbnails.
  - Real-time bit & frame rate and network buffering progress calculation.

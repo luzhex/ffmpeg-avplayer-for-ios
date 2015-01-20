@@ -212,6 +212,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = apple;
+				TargetAttributes = {
+					18A0BADD18A0C3FF008AA66D = {
+						DevelopmentTeam = P76F7CDB9L;
+					};
+				};
 			};
 			buildConfigurationList = 18A0BAD918A0C3FF008AA66D /* Build configuration list for PBXProject "AVPlayerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -383,6 +388,7 @@
 					"$(PROJECT_DIR)/openssl/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e017b687-83c9-446c-88be-4021517d467b";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -393,6 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
