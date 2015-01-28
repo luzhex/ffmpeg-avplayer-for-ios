@@ -13,7 +13,6 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    
     kAVPlayerStateInitialized=0,
     kAVPlayerStatePlaying,
     kAVPlayerStatePaused,
@@ -269,6 +268,14 @@ typedef enum {
  * @This function does not return a value.
  */
 + (void)setVolume:(float)fact;
+
+/*
+ * Audio session interruption handle.
+ * began/ended interruption.
+ * @This function does not return a value.
+ */
+- (void)beganInterruption;
+- (void)endedInterruption;
 
 @end
 
