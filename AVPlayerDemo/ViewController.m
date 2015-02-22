@@ -41,7 +41,9 @@
     // Network files
     _networkfiles = @[@{@"url":@"rtmp://<your RTMP stream url>",@"title":@"RTMP Stream"},
                       @{@"url":@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp",@"title":@"RTSP Stream"},
-                      @{@"url":@"http://hot.vrs.sohu.com/ipad1407291_4596271359934_4618512.m3u8", @"title":@"HTTP m3u8 Stream"}];
+                      @{@"url":@"http://hot.vrs.sohu.com/ipad1407291_4596271359934_4618512.m3u8", @"title":@"HTTP m3u8 Stream"},
+                      @{@"url":@"http://live.nwk4.yupptv.tv/nwk4/smil:mtunes.smil/playlist.m3u8", @"title":@"Another HTTP m3u8 Stream"},
+                      ];
 }
 
 - (void)viewDidLoad
