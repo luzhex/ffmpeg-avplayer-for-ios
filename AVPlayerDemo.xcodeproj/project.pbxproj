@@ -36,6 +36,7 @@
 		18DA08E818BF50A400D2C142 /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08E718BF50A400D2C142 /* test.srt */; };
 		18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35BF19DD8B5C008337A3 /* libcrypto.a */; };
 		18DA35C219DD8B5C008337A3 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35C019DD8B5C008337A3 /* libssl.a */; };
+		18F4C21D1AC18BBA0007C7EC /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7BE18A0C701003ACB1D /* libstdc++.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 				18B8E7B718A0C6C5003ACB1D /* libiconv.dylib in Frameworks */,
 				1824ED9A18C57676005CE8F8 /* libz.dylib in Frameworks */,
 				18B8E7B418A0C6B8003ACB1D /* libbz2.dylib in Frameworks */,
+				18F4C21D1AC18BBA0007C7EC /* libstdc++.dylib in Frameworks */,
 				18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */,
 				18DA35C219DD8B5C008337A3 /* libssl.a in Frameworks */,
 				18A0BAE218A0C3FF008AA66D /* Foundation.framework in Frameworks */,

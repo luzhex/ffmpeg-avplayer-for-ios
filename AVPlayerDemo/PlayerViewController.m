@@ -409,7 +409,13 @@
     }
   };
 
-  BOOL success = [_avplayController openMedia:self.mediaPath onFinishedHandler:block];
+  NSDictionary *options = @{
+    AVOptionNameAVProbeSize : @(500000),   // 500kb, default is 5Mb
+    AVOptionNameHttpUserAgent : @"Mozilla/5.0",
+  };
+  BOOL success = [_avplayController openMedia:self.mediaPath
+                                  withOptions:options
+                            onFinishedHandler:block];
 
   if (!success) {
     block(NO);

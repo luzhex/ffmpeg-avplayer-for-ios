@@ -12,17 +12,32 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/**
+ * AV player states
+ **/
 typedef enum {
     kAVPlayerStateInitialized=0,
     kAVPlayerStatePlaying,
     kAVPlayerStatePaused,
     kAVPlayerStateFinishedPlayback,
     kAVPlayerStateStoped,
-    
     kAVPlayerStateUnknown=0xff
-    
 } AVPlayerState;
 
+/**
+ * AV Options name
+ *
+ * Please be careful, you must know what you are doing,
+ * the default option value is enough for the most situations.
+ **/
+extern NSString *const AVOptionNameAVProbeSize;     // set probing size (default is 5Mb)
+
+extern NSString *const AVOptionNameHttpUserAgent;   // (HTTP) override User-Agent header
+extern NSString *const AVOptionNameHttpHeader;      // (HTTP) set custom HTTP headers
+extern NSString *const AVOptionNameHttpContentType; // (HTTP) force a content type
+extern NSString *const AVOptionNameHttpTimeout;     // (HTTP) set timeout of socket I/O operations
+extern NSString *const AVOptionNameHttpMimeType;    // (HTTP) set MIME type
+extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be sent in applicable future requests
 
 @protocol FFAVPlayerControllerDelegate;
 
@@ -81,9 +96,10 @@ typedef enum {
 /*
  * Open media file at path.
  * @path - path to media file.
+ * @options - A dictionary filled with AVFormatContext and demuxer-private options.
  * @If failed, return NO, otherwise return YES.
  */
-- (BOOL)openMedia:(NSString *)path onFinishedHandler:(void (^)(BOOL))handler;
+- (BOOL)openMedia:(NSString *)path withOptions:(NSDictionary *)options onFinishedHandler:(void (^)(BOOL))handler;
 
 /*
  * Get drawable view object
