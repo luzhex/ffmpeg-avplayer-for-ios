@@ -30,6 +30,7 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - Local file support.
  - http, https, rtsp and rtmp protocols support.
  - Rich options of ffmpeg library support.
+ - Disable audio or video stream.
  - Parse audio and video duration, frame size infos.
  - Grab video thumbnails.
  - Real-time bit & frame rate and network buffering progress calculation.

@@ -16,13 +16,22 @@
  * AV player states
  **/
 typedef enum {
-    kAVPlayerStateInitialized=0,
-    kAVPlayerStatePlaying,
-    kAVPlayerStatePaused,
-    kAVPlayerStateFinishedPlayback,
-    kAVPlayerStateStoped,
-    kAVPlayerStateUnknown=0xff
+  kAVPlayerStateInitialized=0,
+  kAVPlayerStatePlaying,
+  kAVPlayerStatePaused,
+  kAVPlayerStateFinishedPlayback,
+  kAVPlayerStateStoped,
+  kAVPlayerStateUnknown=0xff
 } AVPlayerState;
+
+/**
+ * AV stream discard option
+ **/
+typedef enum {
+  kAVStreamDiscardOptionNone=0,
+  kAVStreamDiscardOptionAudio,
+  kAVStreamDiscardOptionVideo,
+} AVStreamDiscardOption;
 
 /**
  * AV Options name
@@ -43,13 +52,20 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 /**
  * !!! FFAVPlayerController component is NOT thread-safe !!!
- */
+ **/
 @interface FFAVPlayerController : NSObject
 
 @property (nonatomic, readonly) NSString *moviePath;
 @property (nonatomic, weak) id <FFAVPlayerControllerDelegate> delegate;
-@property (nonatomic, assign) BOOL shouldAutoPlay;
-@property (nonatomic, assign) BOOL shouldPlayOnBackground;
+
+@property (nonatomic, assign) BOOL shouldPlayOnBackground;  // default NO
+
+/**
+ * "shouldAutoPlay" and "streamDiscardOption" properties
+ * can only be changed before you open media.
+ **/
+@property (nonatomic, assign) BOOL shouldAutoPlay;          // default NO
+@property (nonatomic, assign) AVStreamDiscardOption streamDiscardOption;  // default kAVStreamDiscardOptionNone
 
 @property (nonatomic, readonly) NSInteger currentAudioTrack;
 @property (nonatomic, readonly) NSArray *audioTracks;

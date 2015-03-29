@@ -361,6 +361,10 @@
   _avplayController.delegate = self;
   _avplayController.shouldPlayOnBackground = YES;
   _avplayController.shouldAutoPlay = (_getStartTime == nil ? YES : NO);
+  
+  // You can disable audio or video stream of av resource, default is kAVStreamDiscardOptionNone.
+  // Uncomment below line code, avplayer will only play audio stream.
+  // _avplayController.streamDiscardOption = kAVStreamDiscardOptionVideo;
 
   void (^block)(BOOL) = ^(BOOL loaded) {
     if (loaded) {
