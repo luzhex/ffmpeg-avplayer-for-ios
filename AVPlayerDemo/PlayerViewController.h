@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <trail.AVPTFramework/FFAVPlayerController.h>
+#import <trialAVPlayerTouch/FFAVPlayerController.h>
 
 @interface PlayerViewController : UIViewController
 

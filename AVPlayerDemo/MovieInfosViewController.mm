@@ -7,8 +7,8 @@
 //
 
 #import "MovieInfosViewController.h"
-#import <trail.AVPTFramework/FFAVPlayerController.h>
-#import <trail.AVPTFramework/FFAVParser.h>
+#import <trialAVPlayerTouch/FFAVPlayerController.h>
+#import <trialAVPlayerTouch/FFAVParser.h>
 
 @implementation MovieInfosViewController
 

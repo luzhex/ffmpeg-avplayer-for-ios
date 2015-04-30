@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		181F6C9718A4830E005E2C11 /* avplayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 181F6C9618A4830E005E2C11 /* avplayer.bundle */; };
 		1824ED9A18C57676005CE8F8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1824ED9918C57676005CE8F8 /* libz.dylib */; };
+		183B71581AF2286F00DB21FC /* trialAVPlayerTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183B71571AF2286F00DB21FC /* trialAVPlayerTouch.framework */; };
 		1869D86218AB8B2B0069EE85 /* MovieInfosViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1869D86118AB8B2B0069EE85 /* MovieInfosViewController.mm */; };
 		1891500D18C5C4C3007EE50D /* test.SMI in Resources */ = {isa = PBXBuildFile; fileRef = 1891500C18C5C4C3007EE50D /* test.SMI */; };
 		1891501C18C5D23F007EE50D /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891501B18C5D23F007EE50D /* UIAlertView+Blocks.m */; };
@@ -16,7 +17,6 @@
 		1891502118C5D53B007EE50D /* VideoEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891502018C5D53B007EE50D /* VideoEffectView.m */; };
 		1891502318C5DC0F007EE50D /* PlaybackSpeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1891502218C5DC0F007EE50D /* PlaybackSpeedView.xib */; };
 		1891502618C5DCE9007EE50D /* AdjustSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1891502518C5DCE9007EE50D /* AdjustSpeedView.m */; };
-		1891504518C72FA9007EE50D /* trail.AVPTFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1891504418C72FA9007EE50D /* trail.AVPTFramework.framework */; };
 		18A0BAE218A0C3FF008AA66D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0BAE118A0C3FF008AA66D /* Foundation.framework */; };
 		18A0BAE418A0C3FF008AA66D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0BAE318A0C3FF008AA66D /* CoreGraphics.framework */; };
 		18A0BAE618A0C3FF008AA66D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0BAE518A0C3FF008AA66D /* UIKit.framework */; };
@@ -42,6 +42,7 @@
 /* Begin PBXFileReference section */
 		181F6C9618A4830E005E2C11 /* avplayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = avplayer.bundle; sourceTree = "<group>"; };
 		1824ED9918C57676005CE8F8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		183B71571AF2286F00DB21FC /* trialAVPlayerTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = trialAVPlayerTouch.framework; sourceTree = "<group>"; };
 		1869D86018AB8B2B0069EE85 /* MovieInfosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieInfosViewController.h; sourceTree = "<group>"; };
 		1869D86118AB8B2B0069EE85 /* MovieInfosViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MovieInfosViewController.mm; sourceTree = "<group>"; };
 		1891500C18C5C4C3007EE50D /* test.SMI */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.SMI; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		1891502218C5DC0F007EE50D /* PlaybackSpeedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackSpeedView.xib; sourceTree = "<group>"; };
 		1891502418C5DCE9007EE50D /* AdjustSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustSpeedView.h; sourceTree = "<group>"; };
 		1891502518C5DCE9007EE50D /* AdjustSpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustSpeedView.m; sourceTree = "<group>"; };
-		1891504418C72FA9007EE50D /* trail.AVPTFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = trail.AVPTFramework.framework; sourceTree = "<group>"; };
 		18A0BADE18A0C3FF008AA66D /* AVPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0BAE118A0C3FF008AA66D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A0BAE318A0C3FF008AA66D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,13 +88,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1891504518C72FA9007EE50D /* trail.AVPTFramework.framework in Frameworks */,
 				18B8E7B718A0C6C5003ACB1D /* libiconv.dylib in Frameworks */,
 				1824ED9A18C57676005CE8F8 /* libz.dylib in Frameworks */,
 				18B8E7B418A0C6B8003ACB1D /* libbz2.dylib in Frameworks */,
 				18F4C21D1AC18BBA0007C7EC /* libstdc++.dylib in Frameworks */,
 				18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */,
 				18DA35C219DD8B5C008337A3 /* libssl.a in Frameworks */,
+				183B71581AF2286F00DB21FC /* trialAVPlayerTouch.framework in Frameworks */,
 				18A0BAE218A0C3FF008AA66D /* Foundation.framework in Frameworks */,
 				18A0BAE618A0C3FF008AA66D /* UIKit.framework in Frameworks */,
 				18A0BAE418A0C3FF008AA66D /* CoreGraphics.framework in Frameworks */,
@@ -133,7 +133,7 @@
 				1824ED9918C57676005CE8F8 /* libz.dylib */,
 				18B8E7B218A0C6B8003ACB1D /* libbz2.dylib */,
 				18B8E7BE18A0C701003ACB1D /* libstdc++.dylib */,
-				1891504418C72FA9007EE50D /* trail.AVPTFramework.framework */,
+				183B71571AF2286F00DB21FC /* trialAVPlayerTouch.framework */,
 				18A0BAE518A0C3FF008AA66D /* UIKit.framework */,
 				18A0BAE118A0C3FF008AA66D /* Foundation.framework */,
 				18B8E7C618A0C73F003ACB1D /* AudioUnit.framework */,
@@ -374,7 +374,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AVPlayerDemo/AVPlayerDemo-Prefix.pch";
@@ -404,7 +405,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AVPlayerDemo/AVPlayerDemo-Prefix.pch";
