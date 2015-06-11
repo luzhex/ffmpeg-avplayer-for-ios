@@ -48,8 +48,14 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+  [super viewDidLoad];
+  
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithTitle:@"Open"
+                                   style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(handleOpen:)];
+  
     [self reloadFiles];
 }
 
@@ -148,4 +154,37 @@
     [self reloadFiles];
     [self.tableView reloadData];
 }
+
+- (void)handleOpen:(id)sender {
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"AV Source URL"
+                                                      message:nil
+                                                     delegate:self
+                                            cancelButtonTitle:@"Cancel"
+                                            otherButtonTitles:@"Open", nil];
+  alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+  [alertView show];
+}
+
+- (void)willPresentAlertView:(UIAlertView *)alertView {
+  UITextField *tf = [alertView textFieldAtIndex:0];
+  
+  tf.text =
+  [[NSUserDefaults standardUserDefaults] stringForKey:@"last_url"];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  UITextField *tf = [alertView textFieldAtIndex:0];
+  
+  if (buttonIndex != alertView.cancelButtonIndex) {
+    [[NSUserDefaults standardUserDefaults] setObject:tf.text forKey:@"last_url"];
+    
+    PlayerViewController *playerController =
+    [self.storyboard instantiateViewControllerWithIdentifier:@"playerVC"];
+    
+    playerController.mediaPath = [tf.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [self presentViewController:playerController animated:YES completion:^{
+    }];
+  }
+}
+
 @end

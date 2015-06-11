@@ -31,6 +31,7 @@ typedef enum {
   kAVStreamDiscardOptionNone=0,
   kAVStreamDiscardOptionAudio,
   kAVStreamDiscardOptionVideo,
+  kAVStreamDiscardOptionSubtitle,
 } AVStreamDiscardOption;
 
 /**
