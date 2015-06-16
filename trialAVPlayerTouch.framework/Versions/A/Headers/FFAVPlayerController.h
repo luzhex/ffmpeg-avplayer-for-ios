@@ -29,9 +29,9 @@ typedef enum {
  **/
 typedef enum {
   kAVStreamDiscardOptionNone=0,
-  kAVStreamDiscardOptionAudio,
-  kAVStreamDiscardOptionVideo,
-  kAVStreamDiscardOptionSubtitle,
+  kAVStreamDiscardOptionAudio=1,
+  kAVStreamDiscardOptionVideo=2,
+  kAVStreamDiscardOptionSubtitle=4,
 } AVStreamDiscardOption;
 
 /**
@@ -50,6 +50,7 @@ extern NSString *const AVOptionNameHttpMimeType;    // (HTTP) set MIME type
 extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be sent in applicable future requests
 
 @protocol FFAVPlayerControllerDelegate;
+@class FFAVSubtitleItem;
 
 /**
  * !!! FFAVPlayerController component is NOT thread-safe !!!
@@ -60,6 +61,7 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 @property (nonatomic, weak) id <FFAVPlayerControllerDelegate> delegate;
 
 @property (nonatomic, assign) BOOL shouldPlayOnBackground;  // default NO
+@property (nonatomic, assign) BOOL enableBuiltinSubtitleRender; // default YES
 
 /**
  * "shouldAutoPlay" and "streamDiscardOption" properties
@@ -325,6 +327,9 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 // AVPlayer current buffering progress was changed
 - (void)FFAVPlayerControllerDidBufferingProgressChange:(FFAVPlayerController *)controller progress:(double)progress;
+
+// AVPlayer current subtitle was changed
+- (void)FFAVPlayerControllerDidSubtitleChange:(FFAVPlayerController *)controller subtitleItem:(FFAVSubtitleItem *)subtitleItem;
 
 // Enter or exit full screen mode
 - (void)FFAVPlayerControllerDidEnterFullscreenMode:(FFAVPlayerController *)controller;
