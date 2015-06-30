@@ -11,8 +11,8 @@
 
 @interface PlayerViewController : UIViewController
 
-// audio or video file path (local or network file path)
-@property (nonatomic, strong) NSString *mediaPath;
+// audio or video url (local or network)
+@property (nonatomic, strong) NSURL *mediaURL;
 
 // did load video successfully callback.
 @property (nonatomic, copy) void (^didLoadVideo)(FFAVPlayerController *player);
@@ -20,7 +20,7 @@
 // get start playback time (>= 0 and <= media duration).
 // if the property is nil, player will start playback from begining.
 // the callback returns a float number value or nil.
-@property (nonatomic, copy) NSNumber* (^getStartTime)(FFAVPlayerController *player, NSString *path);
+@property (nonatomic, copy) NSNumber* (^getStartTime)(FFAVPlayerController *player, NSURL *url);
 
 // required saving progress info, you can save progress here.
 @property (nonatomic, copy) void (^saveProgress)(FFAVPlayerController *player);

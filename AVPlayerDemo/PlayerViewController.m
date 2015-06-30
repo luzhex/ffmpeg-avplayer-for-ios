@@ -359,71 +359,20 @@
   // New and initialize FFAVPlayerController instance to prepare for playback
   _avplayController = [[FFAVPlayerController alloc] init];
   _avplayController.delegate = self;
-  _avplayController.shouldPlayOnBackground = YES;
+  _avplayController.allowBackgroundPlayback = YES;
   _avplayController.shouldAutoPlay = (_getStartTime == nil ? YES : NO);
   
   // You can disable audio or video stream of av resource, default is kAVStreamDiscardOptionNone.
   // Uncomment below line code, avplayer will only play audio stream.
   // _avplayController.streamDiscardOption = kAVStreamDiscardOptionVideo;
 
-  void (^block)(BOOL) = ^(BOOL loaded) {
-    if (loaded) {
-      if ([_avplayController hasVideo]) {
-        _glView = [_avplayController drawableView];
-        _glView.frame = self.view.bounds;
-        _glView.autoresizingMask =
-            UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.view insertSubview:_glView atIndex:0];
-
-        // Setup user interaction (gestures)
-        [self setupUserInteraction:_glView];
-      } else {
-        // Setup user interaction (gestures)
-        [self setupUserInteraction:self.view];
-
-        if ([_avplayController hasAudio]) {
-          [self coverImageView].hidden = NO;
-        }
-      }
-
-      if (_didLoadVideo) {
-        _didLoadVideo(_avplayController);
-      }
-
-      if (_getStartTime) {
-        NSNumber *initCurTime =
-            _getStartTime(_avplayController, self.mediaPath);
-        if (initCurTime.floatValue != CGFLOAT_MAX) {
-          [self startPlaybackAt:initCurTime];
-        }
-      }
-      
-      // Initialize the now playing media info center
-      [self initializeNowPlayingMediaInfoCenter];
-    } else {
-      [self resetNowPlayingMediaInfoCenter];
-      
-      UIAlertView *alertView =
-          [[UIAlertView alloc] initWithTitle:@"Failed to load video!"
-                                     message:nil
-                                    delegate:nil
-                           cancelButtonTitle:@"Close"
-                           otherButtonTitles:nil];
-      [alertView show];
-    }
-  };
-
   NSDictionary *options = @{
     AVOptionNameAVProbeSize : @(500000),   // 500kb, default is 5Mb
     AVOptionNameHttpUserAgent : @"Mozilla/5.0",
   };
-  BOOL success = [_avplayController openMedia:self.mediaPath
-                                  withOptions:options
-                            onFinishedHandler:block];
-
-  if (!success) {
-    block(NO);
-  }
+  
+  [_avplayController openMedia:self.mediaURL
+                   withOptions:options];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -481,6 +430,57 @@
 
 #pragma mark - FFAVPlayerControllerDelegate
 
+- (void)FFAVPlayerControllerWillLoad:(FFAVPlayerController *)controller {
+  // show a loading indicator...
+}
+
+- (void)FFAVPlayerControllerDidLoad:(FFAVPlayerController *)controller error:(NSError *)error {
+  if (error == nil) {
+    if ([_avplayController hasVideo]) {
+      _glView = [_avplayController drawableView];
+      _glView.frame = self.view.bounds;
+      _glView.autoresizingMask =
+      UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+      [self.view insertSubview:_glView atIndex:0];
+      
+      // Setup user interaction (gestures)
+      [self setupUserInteraction:_glView];
+    } else {
+      // Setup user interaction (gestures)
+      [self setupUserInteraction:self.view];
+      
+      if ([_avplayController hasAudio]) {
+        [self coverImageView].hidden = NO;
+      }
+    }
+    
+    if (_didLoadVideo) {
+      _didLoadVideo(_avplayController);
+    }
+    
+    if (_getStartTime) {
+      NSNumber *initCurTime =
+      _getStartTime(_avplayController, self.mediaURL);
+      if (initCurTime.floatValue != CGFLOAT_MAX) {
+        [self startPlaybackAt:initCurTime];
+      }
+    }
+    
+    // Initialize the now playing media info center
+    [self initializeNowPlayingMediaInfoCenter];
+  } else {
+    [self resetNowPlayingMediaInfoCenter];
+    
+    UIAlertView *alertView =
+    [[UIAlertView alloc] initWithTitle:@"Failed to load video!"
+                               message:nil
+                              delegate:nil
+                     cancelButtonTitle:@"Close"
+                     otherButtonTitles:nil];
+    [alertView show];
+  }
+}
+
 // AVPlayer state was changed
 - (void)FFAVPlayerControllerDidStateChange:(FFAVPlayerController *)controller {
   AVPlayerState state = [controller playerState];
@@ -491,7 +491,7 @@
     // If playback reached to end, we return to begin of the media file,
     // and pause the palyer to prepare for next playback.
 
-    if (![controller isNetworkFile]) {
+    if ([self.mediaURL isFileURL]) {
       [controller seekto:0];
       [controller pause];
     }
@@ -676,7 +676,9 @@
 - (void)initializeNowPlayingMediaInfoCenter {
   NSMutableDictionary *currentTrackInfo = [[NSMutableDictionary alloc] init];
   
-  NSString *title = [[_mediaPath lastPathComponent] stringByDeletingPathExtension];
+  NSString *title = [[self.mediaURL lastPathComponent] stringByDeletingPathExtension];
+  title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
   [currentTrackInfo setObject:title forKey:MPMediaItemPropertyArtist];
   [currentTrackInfo setObject:title forKey:MPMediaItemPropertyTitle];
   [currentTrackInfo setObject:@(_avplayController.duration) forKey:MPMediaItemPropertyPlaybackDuration];
@@ -813,14 +815,14 @@
 }
 
 - (void)forwardDidTouch:(id)sender {
-  NSTimeInterval current_time = [_avplayController currentTime];
+  NSTimeInterval current_time = [_avplayController currentPlaybackTime];
   NSTimeInterval duration = [_avplayController duration];
 
   [_avplayController seekto:current_time / duration + 0.05];
 }
 
 - (void)rewindDidTouch:(id)sender {
-  NSTimeInterval current_time = [_avplayController currentTime];
+  NSTimeInterval current_time = [_avplayController currentPlaybackTime];
   NSTimeInterval duration = [_avplayController duration];
 
   [_avplayController seekto:current_time / duration - 0.05];

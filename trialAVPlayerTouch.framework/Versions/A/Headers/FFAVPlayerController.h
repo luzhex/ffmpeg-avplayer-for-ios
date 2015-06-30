@@ -57,10 +57,10 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
  **/
 @interface FFAVPlayerController : NSObject
 
-@property (nonatomic, readonly) NSString *moviePath;
+@property (nonatomic, readonly) NSURL *mediaURL;
 @property (nonatomic, weak) id <FFAVPlayerControllerDelegate> delegate;
 
-@property (nonatomic, assign) BOOL shouldPlayOnBackground;  // default NO
+@property (nonatomic, assign) BOOL allowBackgroundPlayback;  // default NO
 @property (nonatomic, assign) BOOL enableBuiltinSubtitleRender; // default YES
 
 /**
@@ -114,22 +114,16 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 /*
  * Open media file at path.
- * @path - path to media file.
+ * @url - path to media source.
  * @options - A dictionary filled with AVFormatContext and demuxer-private options.
  * @If failed, return NO, otherwise return YES.
  */
-- (BOOL)openMedia:(NSString *)path withOptions:(NSDictionary *)options onFinishedHandler:(void (^)(BOOL))handler;
+- (BOOL)openMedia:(NSURL *)url withOptions:(NSDictionary *)options;
 
 /*
  * Get drawable view object
  */
 - (UIView *)drawableView;
-
-/*
- * Is movie file from network?
- * @If movie file from network return YES, otherwise return NO.
- */
-- (BOOL)isNetworkFile;
 
 /*
  * Enter or exit full screen mode.
@@ -200,7 +194,7 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
  * Query AVPlayer current playback time.
  * @This function return current playback time info.
  */
-- (NSTimeInterval)currentTime;
+- (NSTimeInterval)currentPlaybackTime;
 
 /*
  * Start playback.
@@ -319,19 +313,27 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 @optional
 
-// AVPlayer state was changed
+// will load av resource
+- (void)FFAVPlayerControllerWillLoad:(FFAVPlayerController *)controller;
+
+// did load av resource
+// @error: nil indicates that loaded successfully.
+//         non-nil indicates failure.
+- (void)FFAVPlayerControllerDidLoad:(FFAVPlayerController *)controller error:(NSError *)error;
+
+// state was changed
 - (void)FFAVPlayerControllerDidStateChange:(FFAVPlayerController *)controller;
 
-// AVPlayer current play time was changed
+// current play time was changed
 - (void)FFAVPlayerControllerDidCurTimeChange:(FFAVPlayerController *)controller position:(NSTimeInterval)position;
 
-// AVPlayer current buffering progress was changed
+// current buffering progress was changed
 - (void)FFAVPlayerControllerDidBufferingProgressChange:(FFAVPlayerController *)controller progress:(double)progress;
 
-// AVPlayer current subtitle was changed
+// current subtitle was changed
 - (void)FFAVPlayerControllerDidSubtitleChange:(FFAVPlayerController *)controller subtitleItem:(FFAVSubtitleItem *)subtitleItem;
 
-// Enter or exit full screen mode
+// enter or exit full screen mode
 - (void)FFAVPlayerControllerDidEnterFullscreenMode:(FFAVPlayerController *)controller;
 - (void)FFAVPlayerControllerDidExitFullscreenMode:(FFAVPlayerController *)controller;
 
