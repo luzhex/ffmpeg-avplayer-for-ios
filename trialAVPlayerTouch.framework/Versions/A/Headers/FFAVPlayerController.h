@@ -139,9 +139,10 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 - (BOOL)isFullscreen;
 
 /*
- * Has audio, video, subtitle stream.
+ * Has Dolby Digital, audio, video, subtitle stream.
  * @If media has video or audio stream this function return YES, otherwise return NO.
  */
+- (BOOL)hasDolby;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (BOOL)hasSubtitle;

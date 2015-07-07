@@ -24,6 +24,14 @@
 @property (readonly, nonatomic) NSUInteger numberOfSubtitleStreams;
 
 /*
+ * show supported protocols, formats, decoders, encoders info.
+ */
++ (void)showProtocols;
++ (void)showFormats;
++ (void)showDecoders;
++ (void)showEncoders;
+
+/*
  * open av source
  * return YES if success, otherwise return NO.
  */
