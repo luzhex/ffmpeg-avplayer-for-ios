@@ -40,7 +40,9 @@ typedef enum {
  * Please be careful, you must know what you are doing,
  * the default option value is enough for the most situations.
  **/
-extern NSString *const AVOptionNameAVProbeSize;     // set probing size (default is 5Mb)
+extern NSString *const AVOptionNameAVFormatName;    // set input av format short name, such as "mjpeg", it's optional. Please reference the "showFormats" method of "FFAVParse" class.
+extern NSString *const AVOptionNameAVProbeSize;     // set probing size (Must be an integer not lesser than 32, default is 5Mb)
+extern NSString *const AVOptionNameAVAnalyzeduration;// Specify how many seconds are analyzed to probe the input. A higher value will enable detecting more accurate information, but will increase latency (It defaults to 5 seconds).
 
 extern NSString *const AVOptionNameHttpUserAgent;   // (HTTP) override User-Agent header
 extern NSString *const AVOptionNameHttpHeader;      // (HTTP) set custom HTTP headers
@@ -172,6 +174,14 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
  * @font: subtitle font.
  */
 - (void)setSubtitleFont:(UIFont *)font;
+
+/*
+ * Set subtitle text/background color.
+ * @textColor: subtitle text color.
+ * @backgroundColor: subtitle background color.
+ */
+- (void)setSubtitleTextColor:(UIColor *)textColor;
+- (void)setSubtitleBackgroundColor:(UIColor *)backgroundColor;
 
 /*
  * Query video frame size.

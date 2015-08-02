@@ -14,6 +14,9 @@
 // audio or video url (local or network)
 @property (nonatomic, strong) NSURL *mediaURL;
 
+// input av format name (default is nil)
+@property (nonatomic, strong) NSString *avFormatName;
+
 // did load video successfully callback.
 @property (nonatomic, copy) void (^didLoadVideo)(FFAVPlayerController *player);
 

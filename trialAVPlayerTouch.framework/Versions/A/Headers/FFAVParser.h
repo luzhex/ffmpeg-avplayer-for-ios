@@ -56,8 +56,11 @@
  * return a FFAVSubtitle object that contains a subtitle details,
  * such as start, end time and subtitle text. If subtitle stream is a picture based subtitle type,
  * then returns nil FFAVSubtitle object.
+ * "fps" default value is 60.
  */
-- (FFAVSubtitle *)parseSubtitleFile:(NSString *)path encoding:(NSStringEncoding)encoding;
++ (FFAVSubtitle *)parseSubtitleFile:(NSString *)path
+                           encoding:(NSStringEncoding)encoding
+                          frameRate:(double)fps;
 - (FFAVSubtitle *)parseSubtitleStreamAtIndex:(NSInteger)streamIndex encoding:(NSStringEncoding)encoding; // streamIndex < self.numberOfSubtitleStreams
 
 @end

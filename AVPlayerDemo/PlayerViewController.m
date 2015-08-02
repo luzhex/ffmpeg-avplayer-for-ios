@@ -366,13 +366,19 @@
   // Uncomment below line code, avplayer will only play audio stream.
   // _avplayController.streamDiscardOption = kAVStreamDiscardOptionVideo;
 
-  NSDictionary *options = @{
-    AVOptionNameAVProbeSize : @(500000),   // 500kb, default is 5Mb
-    AVOptionNameHttpUserAgent : @"Mozilla/5.0",
-  };
+  NSMutableDictionary *options = [NSMutableDictionary new];
   
-  [_avplayController openMedia:self.mediaURL
-                   withOptions:options];
+  if (!self.mediaURL.isFileURL) {
+    options[AVOptionNameAVProbeSize] = @(256*1024); // 256kb, default is 5Mb
+    options[AVOptionNameAVAnalyzeduration] = @(1);  // default is 5 seconds
+    options[AVOptionNameHttpUserAgent] = @"Mozilla/5.0";
+  }
+  
+  if (self.avFormatName) {
+    options[AVOptionNameAVFormatName] = self.avFormatName;
+  }
+  
+  [_avplayController openMedia:self.mediaURL withOptions:options];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -551,6 +557,12 @@
                                     position:(NSTimeInterval)position {
   [self updateProgressViewsWithTimePosition:position];
   [self updateNowPlayingMediaInfoCenterElapsedTimeInfo:position];
+}
+
+// AVPlayer current subtitle item was changed
+- (void)FFAVPlayerControllerDidSubtitleChange:(FFAVPlayerController *)controller
+                                 subtitleItem:(FFAVSubtitleItem *)subtitleItem {
+  NSLog(@"%@", subtitleItem);
 }
 
 // Enter or exit full screen mode

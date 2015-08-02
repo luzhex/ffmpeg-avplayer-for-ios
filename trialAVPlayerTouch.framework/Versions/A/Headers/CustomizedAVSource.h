@@ -57,4 +57,7 @@
 
 // query av source context for an url key
 - (id)avsourceURLContextForURLKey:(id)key;
+
+// clear all av source contexts
+- (void)clearAllAVSourceURLContexts;
 @end
