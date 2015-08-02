@@ -44,7 +44,6 @@
     @{@"url":@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp",@"title":@"RTSP Stream"},
     @{@"url":@"rtmp://edge01.fms.dutchview.nl/botr/bunny.flv",@"title":@"rtmp://Bunny.FLV"},
     @{@"url":@"http://hot.vrs.sohu.com/ipad1407291_4596271359934_4618512.m3u8", @"title":@"Youku m3u8 video"},
-    @{@"url":@"https://api.playem.fm/test.m4a", @"title":@"HTTPs video"},
     @{@"url":@"http://live.nwk4.yupptv.tv/nwk4/smil:mtunes.smil/playlist.m3u8", @"title":@"Live video"},
     
     // for MJPEG av format, we recommend that you pass the input av format name for the player.
