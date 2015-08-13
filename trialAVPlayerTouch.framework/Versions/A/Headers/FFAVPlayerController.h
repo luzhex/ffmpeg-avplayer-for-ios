@@ -209,22 +209,15 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 /*
  * Start playback.
- * @fact - playback start position, 0~1.0f
+ * @ti - playback start position (0 ~ duration).
  * @If failed, return NO, otherwise return YES.
  */
-- (BOOL)play:(double)fact;
+- (BOOL)play:(double)ti;
 
 /*
- * Fast forward.
- * @This function does not return a value.
+ * Fast forward & backward.
+ * @Please use "seekto:" method to achieve goals.
  */
-- (void)fastforward;
-
-/*
- * Fast backward.
- * @This function does not return a value.
- */
-- (void)fastbackward;
 
 /*
  * Pause playback.
@@ -246,10 +239,10 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 
 /*
  * Seek to position.
- * @fact - 0~1.0f
+ * @ti - 0 ~ duration.
  * @This function does not return a value.
  */
-- (void)seekto:(double)fact;
+- (void)seekto:(double)ti;
 
 /*
  * Enable real frame rate calculator.

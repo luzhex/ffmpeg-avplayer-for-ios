@@ -438,6 +438,9 @@
 
 - (void)FFAVPlayerControllerWillLoad:(FFAVPlayerController *)controller {
   // show a loading indicator...
+
+  // reset ui(s)
+  _progressSlider.maximumValue = 0;
 }
 
 - (void)FFAVPlayerControllerDidLoad:(FFAVPlayerController *)controller error:(NSError *)error {
@@ -459,6 +462,8 @@
         [self coverImageView].hidden = NO;
       }
     }
+    
+    _progressSlider.maximumValue = [controller duration];
     
     if (_didLoadVideo) {
       _didLoadVideo(_avplayController);
@@ -501,7 +506,7 @@
       [controller seekto:0];
       [controller pause];
     }
-    _progressSlider.value = 1.0f;
+    _progressSlider.value = _progressSlider.maximumValue;
 
     if (_didFinishPlayback) {
       _didFinishPlayback(controller);
@@ -769,7 +774,7 @@
       [FFAVPlayerController formatTimeInterval:timePosition isLeft:NO];
 
   if (_progressSlider.state == UIControlStateNormal)
-    _progressSlider.value = timePosition / duration;
+    _progressSlider.value = timePosition;
 }
 
 #pragma mark - gesture recognizer
@@ -813,8 +818,7 @@
 
 - (void)progressSliderChanged:(id)sender {
   [_avplayController seekto:_progressSlider.value];
-  [self updateProgressViewsWithTimePosition:_progressSlider.value *
-                                            [_avplayController duration]];
+  [self updateProgressViewsWithTimePosition:_progressSlider.value];
 }
 
 - (void)playDidTouch:(id)sender {
@@ -830,14 +834,14 @@
   NSTimeInterval current_time = [_avplayController currentPlaybackTime];
   NSTimeInterval duration = [_avplayController duration];
 
-  [_avplayController seekto:current_time / duration + 0.05];
+  [_avplayController seekto:(current_time / duration + 0.05) * duration];
 }
 
 - (void)rewindDidTouch:(id)sender {
   NSTimeInterval current_time = [_avplayController currentPlaybackTime];
   NSTimeInterval duration = [_avplayController duration];
 
-  [_avplayController seekto:current_time / duration - 0.05];
+  [_avplayController seekto:(current_time / duration - 0.05) * duration];
 }
 
 - (void)adjustSpeedDidTouch:(id)sender {
@@ -1018,14 +1022,9 @@
   if (startTimePosition.floatValue == 0) {
     [_avplayController play:0];
   } else {
-    NSTimeInterval duration = [_avplayController duration];
+    double position = startTimePosition.floatValue;
 
-    double fact = 0;
-    if (duration > 0) {
-      fact = startTimePosition.floatValue / duration;
-    }
-
-    if (![_avplayController play:fact]) {
+    if (![_avplayController play:position]) {
       [_avplayController play:0];
     }
   }

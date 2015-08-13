@@ -38,9 +38,10 @@
 - (BOOL)open:(NSString *)path;
 
 /*
- * determine whether or not has audio and video stream.
+ * Has Dolby Digital, audio, video, subtitle stream.
  * return YES or NO.
  */
+- (BOOL)hasDolby;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (BOOL)hasSubtitle;
