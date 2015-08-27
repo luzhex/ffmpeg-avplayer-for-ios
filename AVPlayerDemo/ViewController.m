@@ -32,7 +32,8 @@
   NSMutableArray *mediaFiles = [NSMutableArray array];
   for (NSString *f in files) {
     NSString *extname = [[f pathExtension] lowercaseString];
-    if ([@[@"avi",@"wmv",@"rmvb",@"flv",@"f4v",@"swf",@"mkv",@"dat",@"vob",@"mts",@"ogg",@"mpg",@"wma"] indexOfObject:extname] != NSNotFound) {
+    if ([@[@"mp4",@"mov",@"m4v",@"wav",@"flac",@"ape",@"wma",
+           @"avi",@"wmv",@"rmvb",@"flv",@"f4v",@"swf",@"mkv",@"dat",@"vob",@"mts",@"ogg",@"mpg"] indexOfObject:extname] != NSNotFound) {
       [mediaFiles addObject:[docPath stringByAppendingPathComponent:f]];
     }
   }

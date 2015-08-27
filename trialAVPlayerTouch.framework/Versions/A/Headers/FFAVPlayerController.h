@@ -334,6 +334,9 @@ extern NSString *const AVOptionNameHttpCookies;     // (HTTP) set cookies to be 
 // current buffering progress was changed
 - (void)FFAVPlayerControllerDidBufferingProgressChange:(FFAVPlayerController *)controller progress:(double)progress;
 
+// current bitrate was changed
+- (void)FFAVPlayerControllerDidBitrateChange:(FFAVPlayerController *)controller bitrate:(NSInteger)bitrate;
+
 // current subtitle was changed
 - (void)FFAVPlayerControllerDidSubtitleChange:(FFAVPlayerController *)controller subtitleItem:(FFAVSubtitleItem *)subtitleItem;
 

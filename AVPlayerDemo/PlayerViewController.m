@@ -583,6 +583,15 @@
   [_fullscreenButton setImage:[UIImage imageNamed:@"avplayer.bundle/zoomin"]];
 }
 
+- (void)FFAVPlayerControllerDidBufferingProgressChange:(FFAVPlayerController *)controller progress:(double)progress {
+  // progress is in range [0 ~ 1]
+  // Buffering progress changed (total buffer is 5Mb)
+}
+
+- (void)FFAVPlayerControllerDidBitrateChange:(FFAVPlayerController *)controller bitrate:(NSInteger)bitrate {
+  // Bitrate changed
+}
+
 #pragma mark - AVAudioSession Manager
 
 // Active or de-active audio session with playback category

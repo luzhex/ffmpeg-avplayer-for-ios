@@ -32,6 +32,7 @@
 		18B8E7BD18A0C6E4003ACB1D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7BC18A0C6E4003ACB1D /* AudioToolbox.framework */; };
 		18B8E7C518A0C737003ACB1D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8E7C418A0C737003ACB1D /* AVFoundation.framework */; };
 		18B8E7E218A21890003ACB1D /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E7E118A21890003ACB1D /* PlayerViewController.m */; };
+		18D18A821B8EE5C3009499A9 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D18A811B8EE5C3009499A9 /* VideoToolbox.framework */; };
 		18DA08BB18BC5AD500D2C142 /* test.ass in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08BA18BC5AD500D2C142 /* test.ass */; };
 		18DA08E818BF50A400D2C142 /* test.srt in Resources */ = {isa = PBXBuildFile; fileRef = 18DA08E718BF50A400D2C142 /* test.srt */; };
 		18DA35C119DD8B5C008337A3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DA35BF19DD8B5C008337A3 /* libcrypto.a */; };
@@ -77,6 +78,7 @@
 		18B8E7C618A0C73F003ACB1D /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		18B8E7E018A21890003ACB1D /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		18B8E7E118A21890003ACB1D /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		18D18A811B8EE5C3009499A9 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		18DA08BA18BC5AD500D2C142 /* test.ass */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ass; sourceTree = "<group>"; };
 		18DA08E718BF50A400D2C142 /* test.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.srt; sourceTree = "<group>"; };
 		18DA35BF19DD8B5C008337A3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = openssl/lib/libcrypto.a; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				18B8E7C518A0C737003ACB1D /* AVFoundation.framework in Frameworks */,
 				18B8E7BD18A0C6E4003ACB1D /* AudioToolbox.framework in Frameworks */,
 				18B8E7BB18A0C6DA003ACB1D /* OpenGLES.framework in Frameworks */,
+				18D18A821B8EE5C3009499A9 /* VideoToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +137,7 @@
 				18B8E7B218A0C6B8003ACB1D /* libbz2.dylib */,
 				18B8E7BE18A0C701003ACB1D /* libstdc++.dylib */,
 				183B71571AF2286F00DB21FC /* trialAVPlayerTouch.framework */,
+				18D18A811B8EE5C3009499A9 /* VideoToolbox.framework */,
 				18A0BAE518A0C3FF008AA66D /* UIKit.framework */,
 				18A0BAE118A0C3FF008AA66D /* Foundation.framework */,
 				18B8E7C618A0C73F003ACB1D /* AudioUnit.framework */,

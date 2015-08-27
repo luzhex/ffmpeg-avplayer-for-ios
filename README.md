@@ -13,17 +13,17 @@ Note: If you need more customized protocols (such as Samba, FTP etc), please fee
 
 ###Note
 
-Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video only on iPad Air, iPhone 5s, iPhone 6(plus) devices.
+Now AVPlayer framework is able to play high resolution videos by using hardware accelerator feature embedded in iPhone/iPad even for MKV or AVI in H264, but this feature requires iOS 8 or later.
 
 ###Compile Requirements
 
  - ARC
- - XCode 6.1 & iOS SDK 8.1
+ - XCode 6.4 & iOS SDK 8.4
 
 ###Deploy Requirements
 
  - ARMv7, ARMv7s, ARM64, i386 and x86-64 architectures
- - Deploy target iOS 5.1
+ - Deploy target iOS 6.0
 
 ###Features
 
@@ -31,7 +31,8 @@ Although AVPlayer SDK supports 1080p video, but we suggest you play 1080p video 
  - armv7, armv7s, arm64, i386 and x86-64 support.
  - Local file support.
  - http, https, rtsp and rtmp protocols support.
- - SMB protocol support.
+ - SMB protocol support. 
+ - Hardware decoder support for H264 format. (iOS 8 or later)
  - Rich options of ffmpeg library support.
  - Disable audio or video stream.
  - Parse audio and video duration, frame size infos.
